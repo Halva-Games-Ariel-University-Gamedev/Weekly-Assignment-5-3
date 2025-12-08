@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # Weekly-Assignment-5
 =======
 # Weekly-Assignment-5
@@ -8,3 +9,6 @@ https://guythelevy.itch.io/gamedev-week-5-2
 
 Made a game with a randomly generated 2d hexagonal map. The core design includes a BFS safety check to guarantee the player always spawns in a large, open area (at least 100 tiles) and never gets trapped in a corner. You explore the map by moving only on grass tiles. The rock tiles are unwalkable and the script makes sure our player has a path to the clickable tile. using bfs.
 >>>>>>> 221ee4a272833067b2ac4ae86342488bf48ddc83
+=======
+# Weekly-Assignment-5-3
+>>>>>>> 33cae84184d915bb522a297d21f40acf0b74b124
