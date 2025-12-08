@@ -8,6 +8,11 @@ public class HexClickManager : MonoBehaviour
     public HexPlayerMovement player;
     public HexMapGenerator mapGenerator;
 
+    public Tilemap hoverTilemap;
+    public TileBase hoverTile;
+
+    private Vector3Int lastHoverCell = Vector3Int.zero;
+
     void Start()
     {
         if (mapGenerator == null)
@@ -18,26 +23,39 @@ public class HexClickManager : MonoBehaviour
     {
         if (Pointer.current == null) return;
 
+        Vector2 screen = Pointer.current.position.ReadValue();
+        Vector3 world = Camera.main.ScreenToWorldPoint(screen);
+        world.z = 0;
+
+        Vector3Int currentCell = tilemap.WorldToCell(world);
+
+        if (currentCell != lastHoverCell)
+        {
+            UpdateHover(currentCell);
+            lastHoverCell = currentCell;
+        }
+
         if (Pointer.current.press.wasPressedThisFrame)
         {
-            Vector2 screen = Pointer.current.position.ReadValue();
-            Vector3 world = Camera.main.ScreenToWorldPoint(screen);
-            world.z = 0;
-
-            Vector3Int cell = tilemap.WorldToCell(world);
-
-            if (tilemap.HasTile(cell))
+            if (tilemap.HasTile(currentCell))
             {
-                
-                if (mapGenerator != null && mapGenerator.IsWalkable(cell))
-                {
-                    player.MoveToCell(cell);
-                }
-                else
-                {
-                    Debug.Log("Cannot move here: It is an obstacle (Mountain/Water) or Generator is missing.");
-                }
+                player.MoveToCell(currentCell);
             }
+        }
+    }
+
+    void UpdateHover(Vector3Int cell)
+    {
+        if (lastHoverCell != Vector3Int.zero && hoverTilemap != null)
+        {
+            hoverTilemap.SetTile(lastHoverCell, null);
+        }
+
+        if (mapGenerator == null || hoverTilemap == null || hoverTile == null) return;
+
+        if (mapGenerator.IsWalkable(cell))
+        {
+            hoverTilemap.SetTile(cell, hoverTile);
         }
     }
 }

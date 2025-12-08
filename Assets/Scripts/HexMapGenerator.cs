@@ -73,7 +73,7 @@ public class HexMapGenerator : MonoBehaviour
 
                 if (reachableCount >= minWalkableTiles)
                 {
-                    Debug.Log($"Spawn found at {candidatePos}. Reachable tiles: {reachableCount}");
+                    Debug.Log("Spawn found at " + candidatePos + ". Reachable tiles: " + reachableCount);
                     player.spawnCell = candidatePos;
                     player.SnapToSpawn();
                     return;
