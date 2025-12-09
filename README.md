@@ -1,7 +1,8 @@
 
 # Weekly-Assignment-5
 
-<img width="962" height="589" alt="image" src="https://github.com/user-attachments/assets/c927ba67-0e0d-4c4f-815a-0af1fd6dfd68" />
+<img width="977" height="635" alt="image" src="https://github.com/user-attachments/assets/7d70f7fc-eb8c-4c0d-8a9e-09d50e700209" />
+
 https://guythelevy.itch.io/gamedev-week-5
 
 
